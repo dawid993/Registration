@@ -54,6 +54,7 @@
 	<tx:annotation-driven />
 	<jpa:repositories base-package="pl.benq.repositories"/>
 	<context:component-scan base-package="pl.benq.controllers"/>
+	<context:component-scan base-package="pl.benq.services"/>
 	
 	<mvc:resources mapping="/css/**" location="/WEB-INF/css/" cache-period="31556926"/>
 	<mvc:annotation-driven />

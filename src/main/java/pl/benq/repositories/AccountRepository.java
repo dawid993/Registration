@@ -6,5 +6,5 @@ import pl.benq.model.Account;
 
 public interface AccountRepository extends JpaRepository<Account, Long> 
 {
-
+	public int countByAccountName(String accountName);
 }
