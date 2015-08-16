@@ -6,6 +6,7 @@
 <html>
 <link rel="stylesheet" type="text/css" href="css/registerStyle.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/registerScript.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -35,89 +36,8 @@
 		</div>
 		<div>
 			<span>&nbsp;</span> <input type="button" class="button" value="Register"
-				 onclick="register()"/>
+				 onclick="setTimeout(register(),2000);"/>
 		</div>
 	</form:form>
-	<script type="text/javascript">
-		var acceptColor = "#4BE115";
-		var declineColor = "#F71B1B";
-		var loginCorrect = false;
-		var passwordsCorrect = false;
-		
-		function register()
-		{			
-			if(loginCorrect && passwordCorrect)
-				{
-				console.log("inside");
-				$("#registerForm").submit();
-				}
-			else
-				alert("Your form has errors");
-		}
-		
-		$(document).ready(function()
-		{
-			//Check login avaiable
-			$("#loginField").blur(function()
-			{				
-				var login = $("#loginField").val();
-				if(login.length == 0){
-					$("#loginField").css({"background":"white"});
-					$("#loginError").text("");
-					loginCorrect = false;
-				}
-					
-				$.ajax({
-					url:"avaiable/"+login,
-					success:function(response){
-						if(response){
-							$("#loginField").css({"background":acceptColor});
-							$("#loginError").text("");
-							loginCorrect = true;
-						}
-						else{
-							$("#loginField").css({"background":declineColor});
-							$("#loginError").text("This login is not avaiable");
-							loginCorrect = false;
-						}
-					}
-				})
-			})	
-			
-			//Check correctness of passwords
-			$("#passwordField,#repasswordField").blur(function(){
-				var password = $("#passwordField").val();
-				var repassword = $("#repasswordField").val();
-				
-				if(password.length == 0 || repassword.length == 0)
-				{
-					$("#passwordField").css({"background":"white"});
-					$("#repasswordField").css({"background":"white"});
-					$("#passwordError").text("");
-					passwordCorrect = false;
-				}
-				else
-				{
-					if(password == repassword)
-					{
-						$("#passwordField").css({"background":acceptColor});
-						$("#repasswordField").css({"background":acceptColor});	
-						$("#passwordError").text("");
-						passwordCorrect = true;
-					}
-					else
-					{
-						$("#passwordField").css({"background":declineColor});
-						$("#repasswordField").css({"background":declineColor});	
-						$("#passwordError").text("Not the same passwords");
-						passwordCorrect = false;						
-					}						
-				}
-					
-			})
-			
-		});
-		
-	</script>
 </body>
 </html>

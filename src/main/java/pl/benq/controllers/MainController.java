@@ -14,10 +14,5 @@ public class MainController {
 	{
 		return "mainPage";
 	}
-	@RequestMapping("/registration")
-	public String registration(Model model)
-	{
-		model.addAttribute("account", new Account());
-		return "registrationForm";
-	}
+	
 }
